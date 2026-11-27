@@ -24,3 +24,11 @@ database persistence. Do not commit credentials or data files.
 Create a Render Blueprint from this repository and select `render.yaml`.
 The included service runs the API without database persistence; configure
 the `DB_*` environment variables in Render if MySQL is available.
+
+## GitHub Actions deployment
+
+The `API CI/CD` workflow runs syntax and endpoint checks for pushes and pull
+requests. To trigger Render deployments on pushes to `main`, create a deploy
+hook for the Render service and add its URL to the GitHub repository as the
+`RENDER_DEPLOY_HOOK_URL` Actions secret. Until configured, CI will pass and
+the deploy step will emit a warning. Do not commit the hook URL.
